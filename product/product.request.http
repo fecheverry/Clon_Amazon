@@ -1,0 +1,45 @@
+//CREATE PRODUCT
+###
+POST http://localhost:3000/product/register
+Content-Type: application/json
+
+{
+    "idUser":"63858a8f79a86fd8f410e9a2",
+    "name":"MARIGUANITA",
+    "price": 2
+}
+
+//GET PRODUCTS BY USER
+###
+GET http://localhost:3000/product/user/seaserio
+Content-Type: application/json
+
+//GET ONE PRODUCT BY ID
+###
+GET http://localhost:3000/product/ind/63859d1a3600e716cb85a378
+Content-Type: application/json
+
+
+//GET ONE PRODUCT BY NAME
+###
+GET http://localhost:3000/product/np
+Content-Type: application/json
+
+{"name":"MARIGUANITA CON POLEN"}
+
+//DELETE PRODUCT
+###
+DELETE  http://localhost:3000/product/63859d1a3600e716cb85a378
+Content-Type: application/json
+
+//UPDATE PRODUCT
+###
+PUT http://localhost:3000/product/63859d053600e716cb85a375
+Content-Type: application/json
+
+{
+    "name":"MARIGUANITA CON POLEN",
+    "price":5
+}
+
+

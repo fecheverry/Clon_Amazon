@@ -1,0 +1,51 @@
+//GET ALL USERS
+###
+GET http://localhost:3000/user/
+
+
+//CREATE USER
+###
+POST http://localhost:3000/user/register
+Content-Type: application/json
+
+{
+    "username":"luis",
+    "email":"luis@gmail.com",
+    "password":"luis123"
+}
+
+//LOGIN WITH PASSWORD
+###
+POST http://localhost:3000/user/loginu
+Content-Type: application/json
+
+{
+    "username":"luis",
+    "password":"luis124"
+}
+
+//LOGIN WITH ID
+###
+GET http://localhost:3000/user/logint/63858b37e617b41c0df64934
+Content-Type: application/json
+
+//DELETE USER
+###
+DELETE  http://localhost:3000/user/63858b37e617b41c0df64934
+Content-Type: application/json
+
+
+//UPDATE USER
+###
+PUT  http://localhost:3000/user/63858b658d8665d5d5e1f073
+Content-Type: application/json
+
+{
+    "username":"seaseriofreddy",
+    "email":"seaserio@gmail.com",
+    "password":"seaserio"
+}
+
+
+
+
