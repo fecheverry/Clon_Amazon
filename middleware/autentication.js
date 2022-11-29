@@ -1,24 +1,31 @@
 import jwt from 'jsonwebtoken'
-import User from "../user/user.model.js";
-export async function isAuthenticate(req, res, next) {
-    try {
-        const {token} = req.cookies;
-        if(!token){
-            return next('Please login to access the data');
-        }
-        const verify = await jwt.verify(token,process.env.SECRET_KEY);
-        req.user = await User.findById(verify.id);
-        next();
-    } catch (error) {
-       return next(error); 
-    }
+
+
+//generar token 
+export async function TokenAssign(user) {
+    return jwt.sign({ _id: user._id }, process.env.JWT_KEY, { expiresIn: '2h' })
 }
 
-export async function Verify(token){
+// verificar el token
+export async function TokenVerify(token) {
     try {
-        return jwt.verify(token, process.env.JWTKEY)
-    }catch(e){
+        return jwt.verify(token, process.env.JWT_KEY)
+    } catch (e) {
         return null
     }
 }
 
+//middleware 
+export async function AuthCheck(req, res, next) {
+    const token = req.headers.authorization.split(' ').pop()
+    const tokenver = await TokenVerify(token)
+    if (!tokenver) {
+        res.status(409).json("Invalid Token")
+    } else {
+        if (tokenver._id) {
+            next()
+        } else {
+            res.status(409).json("Invalid Token")
+        }
+    }
+}

@@ -18,17 +18,17 @@ router.get('/np', async (req, res) => {
 })
 
 router.post('/register', async (req, res) => {
-    const usereg = await registerp(req.body, res)
+    const usereg = await registerp(req, res)
     res.status(200).json(usereg)
 })
 
 router.delete('/:id', async (req, res) => {
-    const userdel = await removePR(req.params, res)
+    const userdel = await removePR(req, res)
     res.status(200).send(userdel)
 })
 
 router.put('/:id', async (req, res) => {
-    const userup = await updatePR(req.params, req.body, res)
+    const userup = await updatePR(req, res)
     res.status(200).send(userup)
 })
 

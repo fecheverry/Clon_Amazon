@@ -1,7 +1,6 @@
 import User from "./user.model.js";
 import bcrypt from 'bcryptjs'
-import jwt from 'jsonwebtoken'
-import { Verify } from "../middleware/autentication.js"
+import { TokenAssign, TokenVerify } from "../middleware/autentication.js"
 
 export async function seeu() {
     try {
@@ -23,11 +22,7 @@ export async function registeru(req) {
         email: req.email,
         password: req.password
     });
-    const result = await user.save();
-    jwt.sign({ id: user._id }, process.env.JWT_KEY, {
-        expiresIn: process.env.JWT_EXPIRE,
-    });
-
+    const result = await user.save()
     return result
 }
 
@@ -37,11 +32,9 @@ export async function loginu(req) {
     //Check password match
     const isPasswordMatched = await bcrypt.compare(password, userExist.password)
     if (isPasswordMatched) {
-        jwt.sign({ id: userExist._id }, process.env.JWT_KEY, {
-            expiresIn: process.env.JWT_EXPIRE,
-        })
-        const result = await User.updateOne({ username: req.username }, { token: true })
-        return result
+        const token = await TokenAssign(userExist)
+        await User.updateOne({ username: req.username }, { token: true })
+        return { token: token }
     } return { mesage: "incorrect password" }
 }
 
@@ -49,11 +42,9 @@ export async function logint(req) {
     if (req.id.length == 24) {
         const user = await User.findById({ _id: req.id })
         if (user) {
-            jwt.sign({ id: user._id }, process.env.JWT_KEY, {
-                expiresIn: process.env.JWT_EXPIRE,
-            })
-            const result = await User.updateOne({ _id: req.id }, { token: true })
-            return result
+            const token = await TokenAssign(user)
+            await User.updateOne({ _id: req.id }, { token: true })
+            return { token: token }
         } else {
             return { message: "user does not exist" }
         }
@@ -63,39 +54,32 @@ export async function logint(req) {
 
 }
 
-export async function removeUS(req) {
-    if (req.id.length == 24) {
-        const user = await User.findById({ _id: req.id })
-        if (user.token) {
-            const result = await User.remove({ _id: req.id })
-            return result
-        } else {
-            return { message: "this operation need autentication" }
-        }
+export async function removeUS() {
+    const token = req.headers.authorization.split(' ').pop()
+    const tokenver = await TokenVerify(token)
+    if (tokenver) {
+        const result = await User.remove({ _id: tokenver._id })
+        return result
     } else {
-        return { message: "invalid ID" }
+        return { message: "this operation need autentication" }
     }
 }
 
-export async function updateUS(req1, req2) {
-    const { id } = req1
-    const { username, email, password } = req2
-    if (id.length == 24) {
-        const user = await User.findById({ _id: id })
-        if (user.token) {
-            const salt = await bcrypt.genSalt(10);
-            const hashPassword = await bcrypt.hash(password, salt);
-            const result = await User.updateOne({ _id: id }, {
-                $set: {
-                    username, email, password: hashPassword
-                }
-            })
-            return result
-        } else {
-            return { message: "this operation need autentication" }
-        }
+export async function updateUS(req) {
+    const { username, email, password } = req.body
+    const token = req.headers.authorization.split(' ').pop()
+    const tokenver = await TokenVerify(token)
+    if (tokenver) {
+        const salt = await bcrypt.genSalt(10);
+        const hashPassword = await bcrypt.hash(password, salt);
+        const result = await User.updateOne({ _id: tokenver._id }, {
+            $set: {
+                username, email, password: hashPassword
+            }
+        })
+        return result
     } else {
-        return { message: "invalid ID" }
+        return { message: "this operation need autentication" }
     }
 }
 
