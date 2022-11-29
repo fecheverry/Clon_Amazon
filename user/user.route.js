@@ -1,5 +1,6 @@
 import express from 'express'
 import { seeu, registeru, loginu, logint, removeUS, updateUS } from "./user.controller.js"
+import { AuthCheck }from "../middleware/autentication.js"
 const router = express.Router()
 
 router.get('/', async (req, res) => {
@@ -23,13 +24,13 @@ router.get('/logint/:id', async (req, res) => {
    await res.status(200).send(userlogt)
 })
 
-router.delete('/:id', async (req, res) => {
-   const userdel = await removeUS(req.params, res)
+router.delete('/', AuthCheck, async (req, res) => {
+   const userdel = await removeUS(req, res)
    res.status(200).send(userdel)
 })
 
-router.put('/:id', async (req, res) => {
-   const userup = await updateUS(req.params, req.body, res)
+router.put('/', AuthCheck, async (req, res) => {
+   const userup = await updateUS(req, res)
    res.status(200).send(userup)
 })
 

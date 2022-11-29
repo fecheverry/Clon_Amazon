@@ -1,18 +1,19 @@
 import User from "../user/user.model.js";
 import Product from "./product.model.js";
-
+import { TokenVerify} from "../middleware/autentication.js"
 
 export async function registerp(req) {
-    const idUser = req.idUser
-    const userExist = await User.findOne({ _id: idUser })
+    const token = req.headers.authorization.split(' ').pop()
+    const tokenver = await TokenVerify(token)
+    const userExist = await User.findOne({ _id: tokenver._id })
     if (userExist) {
-        if (userExist.token) {
+        if (tokenver) {
             const newProduct = new Product({
-                idUser: req.idUser,
+                idUser: userExist._id,
                 user: userExist.username,
-                name: req.name.toLowerCase(),
-                description: req.description,
-                price: req.price
+                name: req.body.name.toLowerCase(),
+                description: req.body.description,
+                price: req.body.price
             });
             const result = await newProduct.save();
             return result
@@ -48,12 +49,14 @@ export async function getnom(req) {
 }
 
 export async function removePR(req) {
-    if (req.id.length == 24) {
-        const ver = await Product.findById({ _id: req.id })
+    const {id} = req.params
+    if (id.length == 24) {
+        const ver = await Product.findById({ _id: id })
         if (ver) {
-            const ver2 = await User.findById({ _id: ver.idUser })
-            if (ver2.token) {
-                const result = await Product.remove({ _id: req.id })
+            const token = req.headers.authorization.split(' ').pop()
+            const tokenver = await TokenVerify(token)
+            if (tokenver) {
+                const result = await Product.remove({ _id: id })
                 return result
             } else { return { message: "this operation need autentication" } }
 
@@ -61,15 +64,16 @@ export async function removePR(req) {
     } else { return { message: "Invalid ID" } }
 }
 
-export async function updatePR(req1, req2) {
-    const { id } = req1
-    const { name, description, price } = req2
+export async function updatePR(req) {
+    const { id } = req.params
+    const { name, description, price } = req.body
     if (id.length == 24) {
         const product = await Product.findById({ _id: id })
-        const user = await User.findById({ _id: product.idUser })
         if (product) {
-            if (user.token) {
-                const result = await Product.updateOne({ _id: req1.id }, {
+            const token = req.headers.authorization.split(' ').pop()
+            const tokenver = await TokenVerify(token)
+            if (tokenver) {
+                const result = await Product.updateOne({ _id: id}, {
                     $set: {
                         name: name.toLowerCase(),
                         description: description,
