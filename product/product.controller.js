@@ -1,6 +1,6 @@
 import User from "../user/user.model.js";
 import Product from "./product.model.js";
-import { TokenVerify} from "../middleware/autentication.js"
+import { TokenVerify } from "../middleware/autentication.js"
 
 export async function registerp(req) {
     const token = req.headers.authorization.split(' ').pop()
@@ -49,17 +49,19 @@ export async function getnom(req) {
 }
 
 export async function removePR(req) {
-    const {id} = req.params
+    const { id } = req.params
     if (id.length == 24) {
         const ver = await Product.findById({ _id: id })
+        const token = req.headers.authorization.split(' ').pop()
+        const tokenver = await TokenVerify(token)
         if (ver) {
-            const token = req.headers.authorization.split(' ').pop()
-            const tokenver = await TokenVerify(token)
-            if (tokenver) {
-                const result = await Product.remove({ _id: id })
-                return result
-            } else { return { message: "this operation need autentication" } }
+            if (ver.idUser == tokenver._id) {
+                if (tokenver) {
+                    const result = await Product.remove({ _id: id })
+                    return result
+                } else { return { message: "this operation need autentication" } }
 
+            } else { return { message: "Error" } }
         } else { return { message: "Not Found" } }
     } else { return { message: "Invalid ID" } }
 }
@@ -69,22 +71,24 @@ export async function updatePR(req) {
     const { name, description, price } = req.body
     if (id.length == 24) {
         const product = await Product.findById({ _id: id })
+        const token = req.headers.authorization.split(' ').pop()
+        const tokenver = await TokenVerify(token)
         if (product) {
-            const token = req.headers.authorization.split(' ').pop()
-            const tokenver = await TokenVerify(token)
-            if (tokenver) {
-                const result = await Product.updateOne({ _id: id}, {
-                    $set: {
-                        name: name.toLowerCase(),
-                        description: description,
-                        price: price
-                    }
-                })
-                return result
-            } else {
-                return { message: "this operation need autentication" }
-            }
+            if (product.idUser == tokenver._id) {
+                if (tokenver) {
+                    const result = await Product.updateOne({ _id: id }, {
+                        $set: {
+                            name: name.toLowerCase(),
+                            description: description,
+                            price: price
+                        }
+                    })
+                    return result
+                } else {
+                    return { message: "this operation need autentication" }
+                }
 
+            } else { return { message: "Error" } }
         } else {
             return { message: "Not Found" }
         }

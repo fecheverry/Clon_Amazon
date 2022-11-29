@@ -2,21 +2,21 @@
 ###
 POST http://localhost:3000/product/register
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Mzg2OGU3MTExODQ1NzU3NWVlODg2NWUiLCJpYXQiOjE2Njk3NjM1OTgsImV4cCI6MTY2OTc3MDc5OH0.Cog-pZg6yIpQ1I5qcdvPGPlr9hCARME1CJ9sZF5kO7g
 
 {
-    "idUser":"63858a8f79a86fd8f410e9a2",
-    "name":"MARIGUANITA",
-    "price": 2
+    "name":"GASEOSA UVA POSTOBON",
+    "price": 16000
 }
 
 //GET PRODUCTS BY USER
 ###
-GET http://localhost:3000/product/user/seaserio
+GET http://localhost:3000/product/user/Victoria
 Content-Type: application/json
 
 //GET ONE PRODUCT BY ID
 ###
-GET http://localhost:3000/product/ind/63859d1a3600e716cb85a378
+GET http://localhost:3000/product/ind/638691d8058eae7be971a9ac
 Content-Type: application/json
 
 
@@ -25,20 +25,22 @@ Content-Type: application/json
 GET http://localhost:3000/product/np
 Content-Type: application/json
 
-{"name":"MARIGUANITA CON POLEN"}
+{"name":"huevofrito"}
 
 //DELETE PRODUCT
 ###
-DELETE  http://localhost:3000/product/63859d1a3600e716cb85a378
+DELETE  http://localhost:3000/product/6386924d058eae7be971a9b5
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Mzg2OGU3MTExODQ1NzU3NWVlODg2NWUiLCJpYXQiOjE2Njk3NjQ3NDgsImV4cCI6MTY2OTc3MTk0OH0.nqCoF_lrtyjnEH_lif8RBFHH1i1k17w5SzrS34O1G2Y
 
 //UPDATE PRODUCT
 ###
-PUT http://localhost:3000/product/63859d053600e716cb85a375
+PUT http://localhost:3000/product/6386923f058eae7be971a9b2
 Content-Type: application/json
+Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Mzg2OGU3MTExODQ1NzU3NWVlODg2NWUiLCJpYXQiOjE2Njk3NjUwNDEsImV4cCI6MTY2OTc3MjI0MX0.tNmfnLY0IKEDJb7tZ81OYAd1GF4groMtdP9sjBlsI_I
 
 {
-    "name":"MARIGUANITA CON POLEN",
+    "name":"UVA",
     "price":5
 }
 

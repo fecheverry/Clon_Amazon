@@ -9,9 +9,9 @@ POST http://localhost:3000/user/register
 Content-Type: application/json
 
 {
-    "username":"luis",
-    "email":"luis@gmail.com",
-    "password":"luis123"
+    "username":"suave",
+    "email":"suave@gmail.com",
+    "password":"suave123"
 }
 
 //LOGIN WITH PASSWORD
@@ -20,30 +20,32 @@ POST http://localhost:3000/user/loginu
 Content-Type: application/json
 
 {
-    "username":"luis",
-    "password":"luis124"
+    "username":"suave",
+    "password":"suave123"
 }
 
 //LOGIN WITH ID
 ###
-GET http://localhost:3000/user/logint/63858b37e617b41c0df64934
+GET http://localhost:3000/user/logint/63868e71118457575ee8865e
 Content-Type: application/json
 
 //DELETE USER
 ###
-DELETE  http://localhost:3000/user/63858b37e617b41c0df64934
+DELETE  http://localhost:3000/user/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Mzg2ODczNDk4YjJlYzFiYmUyMDc5MGEiLCJpYXQiOjE2Njk3NjMzMzYsImV4cCI6MTY2OTc3MDUzNn0.SAPuwiEBlbzRrqYVKEqbxLieX9JYxAIADIICn3DWl2U
 Content-Type: application/json
 
 
 //UPDATE USER
 ###
-PUT  http://localhost:3000/user/63858b658d8665d5d5e1f073
+PUT  http://localhost:3000/user/
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Mzg2ODczNDk4YjJlYzFiYmUyMDc5MGEiLCJpYXQiOjE2Njk3NjMzMzYsImV4cCI6MTY2OTc3MDUzNn0.SAPuwiEBlbzRrqYVKEqbxLieX9JYxAIADIICn3DWl2U
 
 {
-    "username":"seaseriofreddy",
-    "email":"seaserio@gmail.com",
-    "password":"seaserio"
+    "username":"probando",
+    "email":"probando@gmail.com",
+    "password":"probando"
 }
 
 

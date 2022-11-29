@@ -29,13 +29,14 @@ export async function registeru(req) {
 export async function loginu(req) {
     const password = req.password
     const userExist = await User.findOne({ username: req.username })
-    //Check password match
-    const isPasswordMatched = await bcrypt.compare(password, userExist.password)
-    if (isPasswordMatched) {
-        const token = await TokenAssign(userExist)
-        await User.updateOne({ username: req.username }, { token: true })
-        return { token: token }
-    } return { mesage: "incorrect password" }
+    if (userExist) {
+        const isPasswordMatched = await bcrypt.compare(password, userExist.password)
+        if (isPasswordMatched) {
+            const token = await TokenAssign(userExist)
+            await User.updateOne({ username: req.username }, { token: true })
+            return { token: token }
+        } return { mesage: "incorrect password" }
+    }else{return{message:"cannot find user"}}
 }
 
 export async function logint(req) {
@@ -54,7 +55,7 @@ export async function logint(req) {
 
 }
 
-export async function removeUS() {
+export async function removeUS(req) {
     const token = req.headers.authorization.split(' ').pop()
     const tokenver = await TokenVerify(token)
     if (tokenver) {

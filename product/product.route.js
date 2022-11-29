@@ -1,6 +1,7 @@
 import express from 'express'
 import { registerp, getu, getind, getnom, removePR, updatePR } from "./product.controller.js"
 const router = express.Router()
+import { AuthCheck } from "../middleware/autentication.js"
 
 router.get('/user/:username', async (req, res) => {
     const userup = await getu(req.params, res)
@@ -17,17 +18,17 @@ router.get('/np', async (req, res) => {
     res.status(200).send(userup)
 })
 
-router.post('/register', async (req, res) => {
+router.post('/register', AuthCheck, async (req, res) => {
     const usereg = await registerp(req, res)
     res.status(200).json(usereg)
 })
 
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', AuthCheck, async (req, res) => {
     const userdel = await removePR(req, res)
     res.status(200).send(userdel)
 })
 
-router.put('/:id', async (req, res) => {
+router.put('/:id',AuthCheck, async (req, res) => {
     const userup = await updatePR(req, res)
     res.status(200).send(userup)
 })
