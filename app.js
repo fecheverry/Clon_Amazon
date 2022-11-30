@@ -7,6 +7,8 @@ import userRoute from "./user/user.route.js"
 import productRoute from "./product/product.route.js"
 import reviewRoute from "./review/review.route.js"
 import categoryRoute from "./category/category.route.js"
+import cartRoute from "./cart/cart.route.js"
+import orderRoute from "./order/order.route.js"
 const PORT = process.env.PORT || 3000
 const app = express()
 
@@ -36,6 +38,8 @@ export function TestApp() {
     app.use("/product", productRoute)
     app.use("/review", reviewRoute)
     app.use("/category", categoryRoute)
+    app.use("/cart", cartRoute)
+    app.use("/order", orderRoute)
 
     app.use(async (req, res) => {
         res.status(404).json({ message: "Not found." })

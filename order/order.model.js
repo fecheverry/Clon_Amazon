@@ -1,6 +1,6 @@
-import mongoose from 'mongoose'
+import mongoose from 'mongoose';
 
-const cartSchema = mongoose.Schema({
+const orderSchema = mongoose.Schema({
     idUser: {
         type: mongoose.Types.ObjectId, ref: 'user', required: true
     },
@@ -15,4 +15,4 @@ const cartSchema = mongoose.Schema({
     total: { type: Number, required: true }
 })
 
-export default mongoose.model('cart', cartSchema);
+export default mongoose.model('Order', orderSchema);

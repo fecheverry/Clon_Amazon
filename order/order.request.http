@@ -1,0 +1,13 @@
+//BUY CART
+###
+POST http://localhost:3000/order/buy
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Mzg3MTBlZTA3NDc1NjY3YWMzNzZmOTciLCJpYXQiOjE2Njk4MTg1MzYsImV4cCI6MTY2OTgyNTczNn0.CSgorRSILioE6447zSmATBpqLREY7BrN-SonlWRm7Pk
+
+
+//GET ORDERS BY USER
+###
+GET http://localhost:3000/order/orders
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Mzg3MTBlZTA3NDc1NjY3YWMzNzZmOTciLCJpYXQiOjE2Njk4MTg1MzYsImV4cCI6MTY2OTgyNTczNn0.CSgorRSILioE6447zSmATBpqLREY7BrN-SonlWRm7Pk
+

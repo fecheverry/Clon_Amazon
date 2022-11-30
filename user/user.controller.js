@@ -36,7 +36,7 @@ export async function loginu(req) {
             await User.updateOne({ username: req.username }, { token: true })
             return { token: token }
         } return { mesage: "incorrect password" }
-    }else{return{message:"cannot find user"}}
+    } else { return { message: "cannot find user" } }
 }
 
 export async function logint(req) {
