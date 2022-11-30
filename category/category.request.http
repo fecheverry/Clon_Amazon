@@ -2,23 +2,21 @@
 ###
 POST http://localhost:3000/category/create
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Mzg2YmU5ZTg0MGFiNTBlZGY3MDZlNDYiLCJpYXQiOjE2Njk3NzUxMzcsImV4cCI6MTY2OTc4MjMzN30.Yl3ot_lvpXPJKAoFli9wunCqogft9b2ME41FDfuUEJQ
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Mzg2ZGI3N2Y4ZWRjMzkxMmMxOWY4MzYiLCJpYXQiOjE2Njk3ODI1MzMsImV4cCI6MTY2OTc4OTczM30.UepAya0GCdueYqrYDgqKpAz0ake8T1MOLeowr8yvfCU
 
 {
-    "name":"mazorca"
+    "name":"pepa"
 }
 
 //GET ALL CATEGORIES
 ###
 GET http://localhost:3000/category/categories
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Mzg2YmU5ZTg0MGFiNTBlZGY3MDZlNDYiLCJpYXQiOjE2Njk3NzUxMzcsImV4cCI6MTY2OTc4MjMzN30.Yl3ot_lvpXPJKAoFli9wunCqogft9b2ME41FDfuUEJQ
 
 //GET ONE CATEGORY
 ###
 GET http://localhost:3000/category/
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Mzg2YmU5ZTg0MGFiNTBlZGY3MDZlNDYiLCJpYXQiOjE2Njk3NzUxMzcsImV4cCI6MTY2OTc4MjMzN30.Yl3ot_lvpXPJKAoFli9wunCqogft9b2ME41FDfuUEJQ
 
 {
     "name":"asda"

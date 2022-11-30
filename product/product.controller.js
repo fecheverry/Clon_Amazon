@@ -1,4 +1,5 @@
 import User from "../user/user.model.js";
+import Category from "../category/category.model.js";
 import Product from "./product.model.js";
 import { TokenVerify } from "../middleware/autentication.js"
 
@@ -7,18 +8,27 @@ export async function registerp(req) {
     const tokenver = await TokenVerify(token)
     const userExist = await User.findOne({ _id: tokenver._id })
     if (userExist) {
-        if (tokenver) {
-            const newProduct = new Product({
-                idUser: userExist._id,
-                user: userExist.username,
-                name: req.body.name.toLowerCase(),
-                description: req.body.description,
-                price: req.body.price
-            });
-            const result = await newProduct.save();
-            return result
+        const category = await Category.findOne({ name: req.body.category.toLowerCase() })
+        if (category) {
+            if (tokenver) {
+                const newProduct = new Product({
+                    idUser: userExist._id,
+                    user: userExist.username,
+                    name: req.body.name.toLowerCase(),
+                    description: req.body.description,
+                    price: req.body.price
+                });
+                const result = await newProduct.save();
 
-        } else { return { message: "this operation need autentication" } }
+                const concat = result._id.toString()
+                category.products = category.products.concat(concat)
+                const products = category.products
+                await Category.updateOne({ _id: category._id }, { $addToSet: { products: products } })
+
+                return result
+
+            } else { return { message: "this operation need autentication" } }
+        } else { return { message: "Cannot find category" } }
     } else { return { message: "invalid operation" } }
 }
 
@@ -95,4 +105,14 @@ export async function updatePR(req) {
     } else {
         return { message: "invalid ID" }
     }
+}
+
+
+export async function getProductsbyCategory(req) {
+    const category = await Category.find({ name: req.name })
+    if (category) {
+        return category
+    } return { message: "Error" }
+
+
 }

@@ -48,7 +48,6 @@ export function App() {
     const app = TestApp()
 
     mongoose.connect(process.env.MONGODB_URI, {
-        autoIndex: true, //make this also true
     })
         .then(() => console.log("Conectado a MongoDBAtlas"))
         .catch((err) => console.log(err))
