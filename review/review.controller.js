@@ -12,7 +12,6 @@ export async function createReview(req) {
         const tokenver = await TokenVerify(token)
         if (tokenver) {
             const user = await User.findById(tokenver._id)
-            console.log(user)
             const review = new Review({
                 idUser: user._id,
                 user: user.username,
@@ -31,30 +30,26 @@ export async function createReview(req) {
 
 export async function UserReviews(req) {
     const { username } = req
-
     const review = await Review.find({ user: username })
-
     return review
 }
 
-export async function ReviewsByProduct(product) {
-    const id_product = product.idProduct
-
-    const review = await Review.find({ idProduct: id_product })
-
-    return review
+export async function ReviewsByProduct(req) {
+    if (req.id.length == 24) {
+        const product = await Product.findById(req.id)
+        if (product) {
+            const review = await Review.find({ idProduct: req.id })
+            return review
+        } else { return { message: "Cannot find Product" } }
+    } else { return { message: "invalid Product" } }
 }
 
-export async function ReviewsByCalification(calification) {
-    const cal = calification.number
-
-    const review = await Review.find({ calification: cal })
-
+export async function ReviewsByCalification(req) {
+    const review = await Review.find({ calification: req.calification })
     return review
 }
 
 export async function DeleteReview(review) {
     const rev = await Review.findOneAndDelete({ _id: review.id })
-
     return rev
 }

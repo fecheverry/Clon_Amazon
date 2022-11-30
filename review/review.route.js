@@ -4,6 +4,7 @@ import { AuthCheck } from "../middleware/autentication.js"
 
 const router = express.Router();
 
+//create review
 router.post('/create', AuthCheck, async (req, res) => {
     const review = await createReview(req, res)
     res.status(200).json(review)
@@ -17,14 +18,14 @@ router.get('/user/:username', async (req, res) => {
 })
 
 //get reviews by product
-router.get('/reviews', async (req, res) => {
-    const review = await ReviewsByProduct(req.query, res)
+router.get('/reviewsproduct/:id', async (req, res) => {
+    const review = await ReviewsByProduct(req.params, res)
     res.status(200).json(review)
 })
 
 //get reviews by calification
-router.get('/reviews', async (req, res) => {
-    const review = await ReviewsByCalification(req.query, res)
+router.get('/reviewscalification', async (req, res) => {
+    const review = await ReviewsByCalification(req.body, res)
     res.status(200).json(review)
 })
 

@@ -2,15 +2,31 @@
 ###
 POST http://localhost:3000/review/create
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Mzg2ODlmMjk3YjY5OTVkN2JlYjdjN2EiLCJpYXQiOjE2Njk3NjgxMTYsImV4cCI6MTY2OTc3NTMxNn0.RDM9PFdZDbXvAujtYeF69ocPj1d7nKzsGsC81DiVVpk
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Mzg2YTZjNDlhYjNkYjJiNmJiODcxZDkiLCJpYXQiOjE2Njk3NzEwOTgsImV4cCI6MTY2OTc3ODI5OH0.iKPBsZOHBOA_3fOn4-imlOXuAxJRMsPd7Y-NTd5_4GA
 
 {
     "idProduct":"6386a06080b25c78779619b6",
-    "description": "Me encant!!!",
-    "calification": 5
+    "description": "Cule vaina lenta en llegar",
+    "calification": 2
 }
 
 //GET REVIEWS BY USER
 ###
-GET http://localhost:3000/review/user/probando
+GET http://localhost:3000/review/user/flcaro
 Content-Type: application/json
+
+
+//GET REVIEWS BY PRODUCTS
+###
+GET http://localhost:3000/review/reviewsproduct/6386a01f80b25c78779619b1
+Content-Type: application/json
+
+
+//GET REVIEWS BY CALIFICATION
+###
+GET http://localhost:3000/review/reviewscalification
+Content-Type: application/json
+
+{
+    "calification":2
+}
