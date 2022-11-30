@@ -26,7 +26,7 @@ Content-Type: application/json
 
 //LOGIN WITH ID
 ###
-GET http://localhost:3000/user/logint/6386db77f8edc3912c19f836
+GET http://localhost:3000/user/logint/6386db9bf52107b204b9e78b
 Content-Type: application/json
 
 //DELETE USER
