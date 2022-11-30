@@ -18,9 +18,7 @@ export async function buyCart(req) {
                     products: cart.products,
                     total: cart.total
                 })
-
-                //vaciar carrito
-
+                const cart2 = await Cart.findOneAndUpdate({ idUser: userExist._id }, { products: [], total: 0 })
                 const result = await order.save()
                 return result
 
@@ -37,7 +35,7 @@ export async function OrdersByUser(req) {
     if (userExist) {
         if (tokenver) {
             const order = await Order.find({ idUser: userExist._id })
-            if (order) {
+            if (order.length != 0) {
                 return order
             } else { return { message: "you have no purchases" } }
         } else { return { message: "this operation need autenticationt" } }

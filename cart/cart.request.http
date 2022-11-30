@@ -2,7 +2,7 @@
 ###
 PATCH  http://localhost:3000/cart/add
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Mzg3MTBlZTA3NDc1NjY3YWMzNzZmOTciLCJpYXQiOjE2Njk3OTYwOTAsImV4cCI6MTY2OTgwMzI5MH0.LbhzYyw8_JeGODuqdvJuQ4hpZ5YYVk078vXbLTlXAWc
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Mzg3MTBlZTA3NDc1NjY3YWMzNzZmOTciLCJpYXQiOjE2Njk4MTg1MzYsImV4cCI6MTY2OTgyNTczNn0.CSgorRSILioE6447zSmATBpqLREY7BrN-SonlWRm7Pk
 
 {
     "idProduct":"6386dfebe4a0095e97225d84"
@@ -13,7 +13,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Mzg3MTBlZ
 ###
 GET  http://localhost:3000/cart
 Content-Type: application/json
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Mzg3MTBlZTA3NDc1NjY3YWMzNzZmOTciLCJpYXQiOjE2Njk3OTYwOTAsImV4cCI6MTY2OTgwMzI5MH0.LbhzYyw8_JeGODuqdvJuQ4hpZ5YYVk078vXbLTlXAWc
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Mzg3MTBlZTA3NDc1NjY3YWMzNzZmOTciLCJpYXQiOjE2Njk4MTg1MzYsImV4cCI6MTY2OTgyNTczNn0.CSgorRSILioE6447zSmATBpqLREY7BrN-SonlWRm7Pk
 
 
 //DELETE CART

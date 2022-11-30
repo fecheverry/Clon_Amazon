@@ -7,6 +7,7 @@ export async function getCart(req) {
     const token = req.headers.authorization.split(' ').pop()
     const tokenver = await TokenVerify(token)
     const userExist = await User.findOne({ _id: tokenver._id })
+
     if (userExist) {
         const cart = await Cart.findOne({ idUser: tokenver._id })
         if (tokenver) {
@@ -19,8 +20,6 @@ export async function getCart(req) {
 
 export async function addProduct(req) {
     if (req.body.idProduct.length == 24) {
-
-
         const token = req.headers.authorization.split(' ').pop()
         const tokenver = await TokenVerify(token)
         const userExist = await User.findOne({ _id: tokenver._id })
@@ -36,7 +35,6 @@ export async function addProduct(req) {
                         total: 0
                     });
                     await newCart.save();
-
                 }
                 const product = await Product.findById(req.body.idProduct)
                 if (product) {
@@ -49,8 +47,6 @@ export async function addProduct(req) {
                         const final = await Cart.findById(cart._id)
                         return final
                     } return { message: "Error" }
-
-
                 } return { message: "canot find product" }
             } return { message: "invalid token" }
         } return { message: "invalid token" }
@@ -64,6 +60,7 @@ export async function deleteProduct(req) {
         const token = req.headers.authorization.split(' ').pop()
         const tokenver = await TokenVerify(token)
         const userExist = await User.findOne({ _id: tokenver._id })
+
         if (userExist) {
             const cart = await Cart.findOne({ idUser: tokenver._id })
             if (tokenver) {
@@ -87,9 +84,5 @@ export async function deleteProduct(req) {
             } else { return { message: "invalid token" } }
         } else { return { message: "invalid token" } }
     } else { return { message: "invalid ID" } }
-
-}
-
-export async function buyCart(cart) {
 
 }
