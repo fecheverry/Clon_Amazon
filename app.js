@@ -5,6 +5,7 @@ import cookieParser from 'cookie-parser'
 dotenv.config()
 import userRoute from "./user/user.route.js"
 import productRoute from "./product/product.route.js"
+import reviewRoute from "./review/review.route.js"
 const PORT = process.env.PORT || 3000
 const app = express()
 
@@ -32,6 +33,7 @@ export function TestApp() {
     app.use(express.json())
     app.use("/user", userRoute)
     app.use("/product", productRoute)
+    app.use("/review", reviewRoute)
 
     app.use(async (req, res) => {
         res.status(404).json({ message: "Not found." })
