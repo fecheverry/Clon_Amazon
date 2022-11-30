@@ -8,3 +8,4 @@ MONGODB_URI=mongodb+srv://root:admin123@cluster0.n7pgh4q.mongodb.net/APIPOB?retr
 JWT_KEY=BACKEND
 PORT=3000
 ```
+3) Para ejecutar el proyecto se debe usar el comando `npm run start`
