@@ -1,0 +1,60 @@
+import Review from "./review.model.js";
+import Product from "../product/product.model.js";
+import User from "../user/user.model.js";
+import { TokenVerify } from "../middleware/autentication.js"
+
+export async function createReview(req) {
+
+    const id_product = req.body.idProduct
+    const product = await Product.findById(id_product)
+    if (product) {
+        const token = req.headers.authorization.split(' ').pop()
+        const tokenver = await TokenVerify(token)
+        if (tokenver) {
+            const user = await User.findById(tokenver._id)
+            console.log(user)
+            const review = new Review({
+                idUser: user._id,
+                user: user.username,
+                idProduct: product._id,
+                product: product.name,
+                description: req.body.description,
+                calification: req.body.calification
+            })
+
+            const result = await review.save()
+            return result
+        } else { return { message: "Invalid token" } }
+    } else { return { message: "Cannot find Product" } }
+
+}
+
+export async function UserReviews(req) {
+    const { username } = req
+
+    const review = await Review.find({ user: username })
+
+    return review
+}
+
+export async function ReviewsByProduct(product) {
+    const id_product = product.idProduct
+
+    const review = await Review.find({ idProduct: id_product })
+
+    return review
+}
+
+export async function ReviewsByCalification(calification) {
+    const cal = calification.number
+
+    const review = await Review.find({ calification: cal })
+
+    return review
+}
+
+export async function DeleteReview(review) {
+    const rev = await Review.findOneAndDelete({ _id: review.id })
+
+    return rev
+}

@@ -2,11 +2,11 @@
 ###
 POST http://localhost:3000/product/register
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Mzg2OGU3MTExODQ1NzU3NWVlODg2NWUiLCJpYXQiOjE2Njk3NjM1OTgsImV4cCI6MTY2OTc3MDc5OH0.Cog-pZg6yIpQ1I5qcdvPGPlr9hCARME1CJ9sZF5kO7g
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Mzg2OGU3MTExODQ1NzU3NWVlODg2NWUiLCJpYXQiOjE2Njk3NjcyMjUsImV4cCI6MTY2OTc3NDQyNX0.jUV_YeOcTf8_7wNeqq4DUuLclzHZegyIYEstDq8nFKw
 
 {
-    "name":"GASEOSA UVA POSTOBON",
-    "price": 16000
+    "name":"LIRTON POLICOLA",
+    "price": 2000
 }
 
 //GET PRODUCTS BY USER

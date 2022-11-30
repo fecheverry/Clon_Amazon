@@ -1,0 +1,16 @@
+//CREATE A REVIEW
+###
+POST http://localhost:3000/review/create
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Mzg2ODlmMjk3YjY5OTVkN2JlYjdjN2EiLCJpYXQiOjE2Njk3NjgxMTYsImV4cCI6MTY2OTc3NTMxNn0.RDM9PFdZDbXvAujtYeF69ocPj1d7nKzsGsC81DiVVpk
+
+{
+    "idProduct":"6386a06080b25c78779619b6",
+    "description": "Me encant!!!",
+    "calification": 5
+}
+
+//GET REVIEWS BY USER
+###
+GET http://localhost:3000/review/user/probando
+Content-Type: application/json
