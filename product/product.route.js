@@ -1,5 +1,5 @@
 import express from 'express'
-import { registerp, getu, getind, getnom, removePR, updatePR } from "./product.controller.js"
+import { registerp, getu, getind, getnom, removePR, updatePR, getProductsbyCategory } from "./product.controller.js"
 const router = express.Router()
 import { AuthCheck } from "../middleware/autentication.js"
 
@@ -28,8 +28,13 @@ router.delete('/:id', AuthCheck, async (req, res) => {
     res.status(200).send(userdel)
 })
 
-router.put('/:id',AuthCheck, async (req, res) => {
+router.put('/:id', AuthCheck, async (req, res) => {
     const userup = await updatePR(req, res)
+    res.status(200).send(userup)
+})
+
+router.get('/category', async (req, res) => {
+    const userup = await getProductsbyCategory(req.body, res)
     res.status(200).send(userup)
 })
 
