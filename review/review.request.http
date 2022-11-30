@@ -2,12 +2,12 @@
 ###
 POST http://localhost:3000/review/create
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Mzg2YTZjNDlhYjNkYjJiNmJiODcxZDkiLCJpYXQiOjE2Njk3NzEwOTgsImV4cCI6MTY2OTc3ODI5OH0.iKPBsZOHBOA_3fOn4-imlOXuAxJRMsPd7Y-NTd5_4GA
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Mzg2ZGI5YmY1MjEwN2IyMDRiOWU3OGIiLCJpYXQiOjE2Njk3ODcxNDUsImV4cCI6MTY2OTc5NDM0NX0.ZwGJbDWlySo1ri7T5R08-AIgykEbV36YZQsF4_SZdSo
 
 {
-    "idProduct":"6386a06080b25c78779619b6",
-    "description": "Cule vaina lenta en llegar",
-    "calification": 2
+    "idProduct":"6386dfebe4a0095e97225d84",
+    "description": "borralo",
+    "calification": 4
 }
 
 //GET REVIEWS BY USER
@@ -18,7 +18,7 @@ Content-Type: application/json
 
 //GET REVIEWS BY PRODUCTS
 ###
-GET http://localhost:3000/review/product/6386a06080b25c78779619b6
+GET http://localhost:3000/review/product/6386dfebe4a0095e97225d84
 Content-Type: application/json
 
 
@@ -37,4 +37,12 @@ DELETE  http://localhost:3000/review/delete/6386af7b5595822d0c5d9fa1
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Mzg2ODlmMjk3YjY5OTVkN2JlYjdjN2EiLCJpYXQiOjE2Njk3NzQxNDAsImV4cCI6MTY2OTc4MTM0MH0.nul0P1HtxhYzqzn_tQPkO0cPUDCcRNFCXLjpafNHqhw
 
+//GET ADDITIONAL: REVIEWS BY USERNAME AND CALIFICATION 
+###
+GET http://localhost:3000/review/ru/freddy/4
+Content-Type: application/json
 
+//GET ADDITIONAL: REVIEWS BY ID PRODUCT AND CALIFICATION 
+###
+GET http://localhost:3000/review/rp/6386dfebe4a0095e97225d84/4
+Content-Type: application/json

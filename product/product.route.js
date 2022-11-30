@@ -1,5 +1,5 @@
 import express from 'express'
-import { registerp, getu, getind, getnom, removePR, updatePR, getProductsbyCategory } from "./product.controller.js"
+import { registerp, getu, getind, getnom, removePR, updatePR, getProductsbyCategory, GetPC } from "./product.controller.js"
 const router = express.Router()
 import { AuthCheck } from "../middleware/autentication.js"
 
@@ -35,6 +35,11 @@ router.put('/:id', AuthCheck, async (req, res) => {
 
 router.get('/category', async (req, res) => {
     const userup = await getProductsbyCategory(req.body, res)
+    res.status(200).send(userup)
+})
+
+router.get('/pc', async (req, res) => {
+    const userup = await GetPC(req.body, res)
     res.status(200).send(userup)
 })
 

@@ -113,6 +113,22 @@ export async function getProductsbyCategory(req) {
     if (category) {
         return category
     } return { message: "Error" }
+}
 
-
+export async function GetPC(req) {
+    const username = req.username
+    const name = req.name.toLowerCase()
+    if (username) {
+        if (name) {
+            const result = []
+            const category = await Category.findOne({ name: name })
+            for (let i in category.products) {
+                let product = await Product.findById(category.products[i])
+                if (product.user == username) {
+                    result.push(product)
+                }
+              }
+            return result
+        } else { return { message: "need calification" } }
+    } else { return { message: "need product ID" } }
 }
