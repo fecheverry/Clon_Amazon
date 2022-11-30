@@ -1,5 +1,5 @@
 import express from 'express'
-import { createReview, UserReviews, ReviewsByProduct, ReviewsByCalification, DeleteReview } from "./review.controller.js"
+import { createReview, UserReviews, ReviewsByProduct, ReviewsByCalification, DeleteReview, GetUC, GetRP} from "./review.controller.js"
 import { AuthCheck } from "../middleware/autentication.js"
 
 const router = express.Router();
@@ -34,6 +34,19 @@ router.delete('/delete/:id', AuthCheck, async (req, res) => {
     const review = await DeleteReview(req, res)
     res.status(200).json(review)
 })
+
+//get adicionales
+
+router.get('/ru/:username/:calification', async (req, res) => {
+    const review = await GetUC(req, res)
+    res.status(200).json(review)
+})
+
+router.get('/rp/:idp/:calification', async (req, res) => {
+    const review = await GetRP(req, res)
+    res.status(200).json(review)
+})
+
 
 
 export default router;

@@ -2,11 +2,11 @@
 ###
 POST http://localhost:3000/product/register
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Mzg2ZGI5NmY1MjEwN2IyMDRiOWU3ODkiLCJpYXQiOjE2Njk3ODI0NDUsImV4cCI6MTY2OTc4OTY0NX0.FN5iAjZb229bdzsUu7a-4QjIYemfSoRQjiyIgNSwVw4
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Mzg2ZGI5NmY1MjEwN2IyMDRiOWU3ODkiLCJpYXQiOjE2Njk3ODcwNDgsImV4cCI6MTY2OTc5NDI0OH0.wyfbNRGD--IiPBIH0dYwfsrbLVx6aA-MLHM9ibWBD-o
 
 
 {
-    "name":"clona",
+    "name":"perikito",
     "price": 10000,
     "category":"pepa"
 }
@@ -54,4 +54,21 @@ Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Mzg2OGU3MT
     "price":5
 }
 
+//GET ONE PRODUCT BY NAME
+###
+GET http://localhost:3000/product/np
+Content-Type: application/json
+
+{"name":"huevofrito"}
+
+//GET ADDITIONAL: PRODUCTS FOR CATEGORY
+###
+GET http://localhost:3000/product/pc
+Content-Type: application/json
+
+{
+    "username":"fabian",
+    "name":"pepa"
+
+}
 

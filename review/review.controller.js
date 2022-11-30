@@ -69,3 +69,23 @@ export async function DeleteReview(req) {
 
     }else { return { message: "invalid Id" } }
 }
+
+export async function GetUC(req) {
+    const { username, calification } = req.params
+    if (username) {
+        if(calification){
+            const result = await Review.find({ user: username, calification: calification })
+            return result
+        }else{ return { message: "need calification" } }
+    }else { return { message: "need username" } }
+}
+
+export async function GetRP(req) {
+    const { idp, calification } = req.params
+    if (idp) {
+        if(calification){
+            const result = await Review.find({idProduct:idp, calification:calification})
+            return result
+        }else{ return { message: "need calification" } }
+    }else { return { message: "need product ID" } }
+}
