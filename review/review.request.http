@@ -18,15 +18,23 @@ Content-Type: application/json
 
 //GET REVIEWS BY PRODUCTS
 ###
-GET http://localhost:3000/review/reviewsproduct/6386a01f80b25c78779619b1
+GET http://localhost:3000/review/product/6386a06080b25c78779619b6
 Content-Type: application/json
 
 
 //GET REVIEWS BY CALIFICATION
 ###
-GET http://localhost:3000/review/reviewscalification
+GET http://localhost:3000/review/calification
 Content-Type: application/json
 
 {
     "calification":2
 }
+
+//GET REVIEWS BY CALIFICATION
+###
+DELETE  http://localhost:3000/review/delete/6386af7b5595822d0c5d9fa1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Mzg2ODlmMjk3YjY5OTVkN2JlYjdjN2EiLCJpYXQiOjE2Njk3NzQxNDAsImV4cCI6MTY2OTc4MTM0MH0.nul0P1HtxhYzqzn_tQPkO0cPUDCcRNFCXLjpafNHqhw
+
+
