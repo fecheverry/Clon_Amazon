@@ -18,19 +18,19 @@ router.get('/user/:username', async (req, res) => {
 })
 
 //get reviews by product
-router.get('/reviewsproduct/:id', async (req, res) => {
+router.get('/product/:id', async (req, res) => {
     const review = await ReviewsByProduct(req.params, res)
     res.status(200).json(review)
 })
 
 //get reviews by calification
-router.get('/reviewscalification', async (req, res) => {
+router.get('/calification', async (req, res) => {
     const review = await ReviewsByCalification(req.body, res)
     res.status(200).json(review)
 })
 
 //delete review
-router.delete('/reviews', AuthCheck, async (req, res) => {
+router.delete('/delete/:id', AuthCheck, async (req, res) => {
     const review = await DeleteReview(req, res)
     res.status(200).json(review)
 })

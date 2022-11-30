@@ -49,7 +49,23 @@ export async function ReviewsByCalification(req) {
     return review
 }
 
-export async function DeleteReview(review) {
-    const rev = await Review.findOneAndDelete({ _id: review.id })
-    return rev
+export async function DeleteReview(req) {
+    if (req.params.id) {
+        const id_review = req.params.id
+        const review = await Review.findById(id_review)
+        console.log(id_review)
+        if (review) {
+            const token = req.headers.authorization.split(' ').pop()
+            const tokenver = await TokenVerify(token)
+            if (tokenver) {
+                if (tokenver._id == review.idUser) {
+                    const rev = await Review.remove({ _id: id_review })
+                    return rev
+                } else { return { message: "Error" } }
+
+            } else { return { message: "Invalid token" } }
+        } else { return { message: "Cannot Find review" } }
+
+
+    }else { return { message: "invalid Id" } }
 }
