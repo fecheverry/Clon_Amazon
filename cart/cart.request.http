@@ -2,7 +2,7 @@
 ###
 PATCH  http://localhost:3000/cart/add
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Mzg2ZGI5YmY1MjEwN2IyMDRiOWU3OGIiLCJpYXQiOjE2Njk3OTAxMzcsImV4cCI6MTY2OTc5NzMzN30.eCGWj68qQ_PUYDTuDavPxPyKiq1vj8-gWla06W_tGP8
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Mzg3MTBlZTA3NDc1NjY3YWMzNzZmOTciLCJpYXQiOjE2Njk3OTYwOTAsImV4cCI6MTY2OTgwMzI5MH0.LbhzYyw8_JeGODuqdvJuQ4hpZ5YYVk078vXbLTlXAWc
 
 {
     "idProduct":"6386dfebe4a0095e97225d84"
@@ -13,14 +13,14 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Mzg2ZGI5Y
 ###
 GET  http://localhost:3000/cart
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Mzg2ZGI5YmY1MjEwN2IyMDRiOWU3OGIiLCJpYXQiOjE2Njk3OTAxMzcsImV4cCI6MTY2OTc5NzMzN30.eCGWj68qQ_PUYDTuDavPxPyKiq1vj8-gWla06W_tGP8
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Mzg3MTBlZTA3NDc1NjY3YWMzNzZmOTciLCJpYXQiOjE2Njk3OTYwOTAsImV4cCI6MTY2OTgwMzI5MH0.LbhzYyw8_JeGODuqdvJuQ4hpZ5YYVk078vXbLTlXAWc
 
 
 //DELETE CART
 ###
 DELETE   http://localhost:3000/cart/delete
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Mzg2ZGI5YmY1MjEwN2IyMDRiOWU3OGIiLCJpYXQiOjE2Njk3OTAxMzcsImV4cCI6MTY2OTc5NzMzN30.eCGWj68qQ_PUYDTuDavPxPyKiq1vj8-gWla06W_tGP8
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Mzg3MTBlZTA3NDc1NjY3YWMzNzZmOTciLCJpYXQiOjE2Njk3OTYwOTAsImV4cCI6MTY2OTgwMzI5MH0.LbhzYyw8_JeGODuqdvJuQ4hpZ5YYVk078vXbLTlXAWc
 
 {
     "idProduct":"6386dfebe4a0095e97225d84"

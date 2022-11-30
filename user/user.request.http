@@ -9,9 +9,9 @@ POST http://localhost:3000/user/register
 Content-Type: application/json
 
 {
-    "username":"freddy",
-    "email":"freddy@gmail.com",
-    "password":"freddy123"
+    "username":"flcaro",
+    "email":"flcaro@gmail.com",
+    "password":"admin"
 }
 
 //LOGIN WITH PASSWORD
@@ -20,8 +20,8 @@ POST http://localhost:3000/user/loginu
 Content-Type: application/json
 
 {
-    "username":"admin",
-    "password":"admin123"
+    "username":"flcaro",
+    "password":"admin"
 }
 
 //LOGIN WITH ID
