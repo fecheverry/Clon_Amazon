@@ -9,4 +9,4 @@ JWT_KEY=BACKEND
 PORT=3000
 ```
 3) Para ejecutar el proyecto se debe usar el comando `npm run start`
-4) Para ejecutar los test usar el comando ``npx jest`
+4) Para ejecutar los test usar el comando `npx jest`
